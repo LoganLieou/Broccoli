@@ -4,7 +4,8 @@ Yes everything in here is poorly named, and all the code is unreadable you're we
 
 ## General Explaination for the Names
 
-- A  (Array)
+- A  (Algebra)
+- AR (Array)
 - C  (Combinatorics)
 - DP (Dynamic Programming)
 - DS (Data Structures)
