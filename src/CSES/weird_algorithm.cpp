@@ -1,13 +1,14 @@
 #include <bits/stdc++.h>
 #define N size
 #define PB push_back
+#define ll long long
 
 using namespace std;
 
-void print(vector<int> v) { for (int x: v) cout << x << " "; }
+void print(vector<ll> v) { for (ll x: v) cout << x << " "; }
 
-vector<int> weirdAlgorithm(int n) {
-	vector<int> temp;
+vector<ll> weirdAlgorithm(ll n) {
+	vector<ll> temp;
 	while (n != 1) {
 		temp.PB(n);
 		n = n % 2 == 0 ? n / 2 : (n * 3) + 1;
@@ -22,6 +23,6 @@ int main() {
 	cin.tie(); cin.sync_with_stdio(0);
 
 	// input a number
-	int n; cin >> n;
-	vector<int> res = weirdAlgorithm(n); print(res);
+	ll n; cin >> n;
+	vector<ll> res = weirdAlgorithm(n); print(res);
 }

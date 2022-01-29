@@ -1,47 +1,46 @@
 #include <bits/stdc++.h>
+#define ll long long
+#define PB push_back
 #define N size
+#define P pop
 
 using namespace std;
 
-// perform dfs
 void dfs(vector<vector<char>>& grid, int r, int c) {
-	// edge case check
-	if (r < 0 or r >= grid.N() or c < 0 or c >= grid[0].N() or grid[r][c] == '#') return;
+	if (r < 0 || r >= grid.N() || c < 0 || c >= grid[0].N() ||
+			grid[r][c] != '.')
+		return;
 
-	grid[r][c] = '#';
+	grid[r][c] = 'v';
 
-	// recursive search
 	dfs(grid, r+1, c);
 	dfs(grid, r-1, c);
-	dfs(grid, r, c-1);
 	dfs(grid, r, c+1);
+	dfs(grid, r, c-1);
 }
 
 int countingRooms(vector<vector<char>>& grid) {
-	int result = 0;
-	for (int r = 0; r < grid.N(); r++) {
-		for (int c = 0; c < grid[0].N(); c++) {
-			if (grid[r][c] == '.') {
-				result++;
-				dfs(grid, r, c);
+	int count = 0;
+	for (int i = 0; i < grid.N(); i++) {
+		for (int j = 0; j < grid[0].N(); j++) {
+			if (grid[i][j] == '.') {
+				dfs(grid, i, j);
+				count++;
 			}
 		}
 	}
-	return result;
+	return count;
 }
 
 int main() {
-	int t; cin >> t;
-	while(t--) {
-		vector<vector<char>> rooms;
-		int n, m; cin >> n >> m;
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				cin >> rooms[i][j];
-			}
-		}
+	int n, m; cin >> n >> m;
 
-		// dfs
-		cout << countingRooms(rooms) << endl;
+	vector<vector<char>> rooms(n, vector<int>(m, '#'));
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			cin >> rooms[i][j];
+		}
 	}
+
+	cout << countingRooms(rooms) << endl;
 }
